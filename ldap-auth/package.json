@@ -1,0 +1,19 @@
+{
+  "name": "cnet-auth",
+  "version": "0.0.0",
+  "description": "CNet authentication check with ldapjs",
+  "main": "cnet.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ldap",
+    "auth"
+  ],
+  "author": "J. Voigt",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "ldapjs": "~0.7.1",
+    "minimist": "~1.1.0"
+  }
+}
