@@ -1,4 +1,6 @@
-Quick demo of [HTTP Basic Auth](http://en.wikipedia.org/wiki/Basic_access_authentication) with [`basic`](https://github.com/thisandagain/basic).
+Quick demo of [HTTP Basic Auth](http://en.wikipedia.org/wiki/Basic_access_authentication).
+
+All of this is largely cribbed from [this gist](https://gist.github.com/charlesdaniel/1686663).
 
 
 ## Usage
@@ -28,5 +30,3 @@ comments.
 
 * dat [`auth`](https://github.com/maxogden/dat/blob/master/lib/auth.js) module,
   used in conjunction with cookies.
-
-* [example](https://github.com/joyrexus/sandbox/tree/master/hapi-auth) of basic auth with hapi.js
