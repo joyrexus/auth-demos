@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>server.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>server.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h3>a breakdown of basic authentication</h3>
+<hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>See <a href="http://docs.nodejitsu.com/articles/HTTP/servers/how-to-create-a-HTTP-server">this tutorial on creating an HTTP server</a> if this is all new to you.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> http = require(<span class="string">'http'</span>);
+
+<span class="keyword">var</span> server = http.createServer(<span class="keyword">function</span>(req, res) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Use <code>console.log(req);</code> here to debug/dump the request</p>
+<p>If they pass in a basic auth credential it&#39;ll be 
+in a header called <code>Authorization</code> (note NodeJS 
+lowercases the names of headers in its request object)</p>
+<p><code>auth</code> now contains a base64 encoding of <code>username:password</code> 
+so we need to decode it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> auth = req.headers[<span class="string">'authorization'</span>];  
+    console.log(<span class="string">"Authorization Header is: "</span>, auth);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>No <code>Authorization</code> header was passed in so it&#39;s the first time 
+the browser hit us</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span>(!auth) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Sending a 401 will require authentication, we need to send 
+the <code>WWW-Authenticate</code> to tell them the sort of authentication 
+to use.  Basic auth is quite literally the easiest and least 
+secure, it simply gives back <code>base64(username + &quot;:&quot; + password)</code>
+from the browser</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        res.statusCode = <span class="number">401</span>;
+        res.setHeader(<span class="string">'WWW-Authenticate'</span>, <span class="string">'Basic realm="Secure Area"'</span>);
+        res.end(<span class="string">'&lt;html&gt;&lt;body&gt;This is a secure area. Try reloading to login.'</span>);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>The <code>Authorization</code> was passed in so now we validate it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">else</span> <span class="keyword">if</span>(auth) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Split on a space, the original auth looks like 
+&quot;Basic am9uZXM6MTIz&quot; and we need the 2nd part</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> tmp = auth.split(<span class="string">' '</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>create a buffer and tell it the data coming in is base64</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> buf = <span class="keyword">new</span> Buffer(tmp[<span class="number">1</span>], <span class="string">'base64'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>read it back out as a string</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> plain_auth = buf.toString();    
+
+        console.log(<span class="string">"Decoded Authorization "</span>, plain_auth);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>At this point <code>plain_auth</code> is <code>username:password</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> creds = plain_auth.split(<span class="string">':'</span>);    <span class="comment">// split on a ':'</span>
+        <span class="keyword">var</span> username = creds[<span class="number">0</span>];
+        <span class="keyword">var</span> password = creds[<span class="number">1</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Is the username/password correct?</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span>((username == <span class="string">'jones'</span>) &amp;&amp; (password == <span class="string">'123'</span>)) {   
+            res.statusCode = <span class="number">200</span>;  <span class="comment">// OK</span>
+            res.end(<span class="string">'&lt;html&gt;&lt;body&gt;'</span> + username + <span class="string">' is valid!'</span>);
+        }
+        <span class="keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Force to retry authentication</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            res.statusCode = <span class="number">401</span>;   <span class="comment">// or 403 to prevent retry</span>
+            res.setHeader(<span class="string">'WWW-Authenticate'</span>, <span class="string">'Basic realm="Secure Area"'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>... or alternatively just reject them altogether with 
+a 403 Forbidden: <code>res.statusCode = 403;</code>   </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            res.end(<span class="string">'&lt;html&gt;&lt;body&gt;Forbidden!'</span>);
+        }
+    }
+});
+
+server.listen(<span class="number">8000</span>, <span class="keyword">function</span>() { 
+  console.log(<span class="string">"Server Listening on http://localhost:8000"</span>); 
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

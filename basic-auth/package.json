@@ -5,18 +5,13 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "docs": "open docs/server.html"
   },
   "keywords": [
     "auth",
     "demo"
   ],
   "author": "J. Voigt",
-  "license": "BSD-2-Clause",
-  "dependencies": {
-    "basic": "0.0.3"
-  },
-  "devDependencies": {
-    "passport": "~0.2.0"
-  }
+  "license": "BSD-2-Clause"
 }

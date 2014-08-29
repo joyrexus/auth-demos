@@ -1,20 +1,20 @@
 {
-  "name": "cnet-auth",
+  "name": "make-curl",
   "version": "0.0.0",
-  "description": "CNet authentication check with ldapjs",
-  "main": "index.js",
+  "description": "'make a curl command to test an http server with basic auth'",
+  "main": "make-curl.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": { "cnet": "bin/cnet.js" },
+  "bin": "make-curl",
   "keywords": [
-    "ldap",
-    "auth"
+    "curl",
+    "http",
+    "basic-auth"
   ],
   "author": "J. Voigt",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "ldapjs": "~0.7.1",
     "minimist": "~1.1.0"
   }
 }
