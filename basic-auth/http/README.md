@@ -22,7 +22,7 @@ Alternatively, run the client:
 
     node client.js 
 
-Try `npm run docs` to view a prettifid version of `server.js` and its inline
+Try `npm run docs` to view a prettified version of `server.js` and its inline
 comments.
 
 
