@@ -1,0 +1,20 @@
+{
+  "name": "hapi-demo",
+  "version": "0.0.0",
+  "description": "'quick tls demo with hapi'",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "hapi",
+    "demo",
+    "tls"
+  ],
+  "author": "J. Voigt",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^6.6.0"
+  }
+}
