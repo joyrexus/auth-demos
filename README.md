@@ -18,7 +18,7 @@ For our use case, we're also interested in validating the returned credentials (
   * `http` - a simple http server with basic auth
   * `hapi` - same as above, but we're using `hapi.js` as our server framework
   * `hapi-ldap` - same as above, but validating credentials against an LDAP
-    server
+  * `hapi-ldap-tls` - same as above, but using TLS for encryption
 
 * `tls/` - demos showing how to run various forms of `https` servers
   * `https` - using the `https` module (part of node's core library)
