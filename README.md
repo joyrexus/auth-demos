@@ -13,10 +13,12 @@ For our use case, we're also interested in validating the returned credentials (
 * `make-curl` - utility for generating test `curl` commands
 
 * `ldap-auth` - demo of how to authenticate against an LDAP server
-* `basic-auth` - http server prompting for basic authentication
-* `hapi-auth` - same as above, but we're using `hapi.js` as our server framework
-* `hapi-auth-ldap` - same as above, but validating credentials against an LDAP
-  server
+
+* `basic-auth/` - http servers prompting for basic authentication
+  * `http` - a simple http server with basic auth
+  * `hapi` - same as above, but we're using `hapi.js` as our server framework
+  * `hapi-ldap` - same as above, but validating credentials against an LDAP
+    server
 
 * `tls/` - demos showing how to run various forms of `https` servers
   * `https` - using the `https` module (part of node's core library)
