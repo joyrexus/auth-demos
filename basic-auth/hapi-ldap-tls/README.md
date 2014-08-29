@@ -8,7 +8,11 @@ In this demo we're [validating](https://github.com/joyrexus/auth-demos/blob/gh-p
     npm install
     npm run start
 
-If you have a [CNet ID](https://itservices.uchicago.edu/services/cnetid) try ...
+Once the server is running try opening the login route ([`https://localhost:8080/login`](http://localhost:8080/login)) in a web browser.
+
+You should get prompted for a username and password.  If you have a [CNet ID](https://itservices.uchicago.edu/services/cnetid), you should get authenticated and receive a welcome message.
+
+Instead of using a web browser, you can alternatively test your credentials with our command-line client:
 
     node client.js --username CNET_ID --password CNET_PASS
 
