@@ -10,11 +10,10 @@ For our use case, we're also interested in validating the returned credentials (
 
 ---
 
-* `https-demo` - demo of how to deal with certs when running an `https` server
-* `basic-auth` - http server prompting for basic authentication
-* `ldap-auth` - demo of how to authenticate against an LDAP server
-* `basic-auth-ldap` - same as above, but validating credentials against an LDAP
-  server
-* `hapi-auth-ldap` - same as above, but we're using `hapi.js` as our server
-  framework
 * `make-curl` - utility for generating test `curl` commands
+* `https-demo` - demo of how to deal with certs when running an `https` server
+* `ldap-auth` - demo of how to authenticate against an LDAP server
+* `basic-auth` - http server prompting for basic authentication
+* `hapi-auth` - same as above, but we're using `hapi.js` as our server framework
+* `hapi-auth-ldap` - same as above, but validating credentials against an LDAP
+  server

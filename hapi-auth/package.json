@@ -1,22 +1,26 @@
 {
-  "name": "basic-auth",
+  "name": "hapi-auth",
   "version": "0.0.0",
-  "description": "quick demo of HTTP Basic Auth",
+  "description": "quick demo of hapi-auth-basic",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [
+    "hapi",
     "auth",
+    "basic",
     "demo"
   ],
   "author": "J. Voigt",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "basic": "0.0.3"
+    "hapi-auth-basic": "~1.1.1",
+    "hapi": "~6.6.0",
+    "bcrypt": "~0.8.0"
   },
   "devDependencies": {
-    "passport": "~0.2.0"
+    "request": "~2.40.0"
   }
 }

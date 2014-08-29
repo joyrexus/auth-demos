@@ -13,8 +13,7 @@ request(options, function (err, res, body) {
     console.dir(err)
     return
   }
-  console.dir('headers', res.headers)
-  console.dir('status code', res.statusCode)
+  if (res.headers.length) console.dir('headers:', res.headers)
+  if (res.statusCode.length) console.dir('status code:', res.statusCode)
   console.dir(body)
 })
-

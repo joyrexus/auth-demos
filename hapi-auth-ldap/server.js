@@ -13,11 +13,12 @@ server.pack.register(Basic, function (err) {
         path: '/login', 
         config: { auth: 'simple' },
         handler: function (request, reply) { 
-          console.log(request);
-          reply('ok!'); 
+          var user = request.auth.credentials.id;
+          reply('Welcome ' + user + '!'); 
         }
     });
     server.start(function () {
-      console.log('info', 'Server running at: ' + server.info.uri);
+      console.log('Server running at: ' + server.info.uri);
+      console.log('Login at: ' + server.info.uri + '/login');
     });
 });
