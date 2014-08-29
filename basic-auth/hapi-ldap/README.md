@@ -1,17 +1,17 @@
 Quick demo of [HTTP Basic Auth](http://en.wikipedia.org/wiki/Basic_access_authentication) with [`hapi-auth-basic`](https://github.com/hapijs/hapi-auth-basic) plugin.
 
+In this demo we're [validating](https://github.com/joyrexus/auth-demos/blob/gh-pages/basic-auth/hapi-ldap/server.js#L10) the returned credentials provided by the user (viz., username and password) [against an LDAP server](http://en.wikipedia.org/wiki/Lightweight_Directory_Access_Protocol#Bind_.28authenticate.29) (`ldap.uchicago.edu`).
+
 
 ## Usage
 
     npm install
     npm run start
 
-Then try ...
+If you have a [CNet ID](https://itservices.uchicago.edu/services/cnetid) try ...
 
-    curl -H "Authorization: Basic am9objoxMjM=" http://localhost:3000/login 
+    node client.js --username CNET_ID --password CNET_PASS
 
-... which should return: `ok!`
+If authenticated, should return ...
 
-Alternatively, run the client:
-
-    node client.js 
+    'Welcome <CNET_ID>!'

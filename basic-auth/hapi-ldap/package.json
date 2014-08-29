@@ -19,7 +19,8 @@
     "hapi-auth-basic": "~1.1.1",
     "hapi": "~6.6.0",
     "bcrypt": "~0.8.0",
-    "ldapjs": "~0.7.1"
+    "ldapjs": "~0.7.1",
+    "minimist": "~1.1.0"
   },
   "devDependencies": {
     "request": "~2.40.0"

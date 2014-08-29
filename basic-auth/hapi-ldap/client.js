@@ -1,10 +1,28 @@
-var request = require('request')
+#!/usr/bin/env node 
+var request = require('request');
+var parse = require('minimist');
+
+var parseOptions = {
+  default: {
+    host: 'localhost',
+    port: '3000',
+    user: 'your_cnet_id',
+    pass: 'your_cnet_pw',
+  },
+  alias: {
+    username: 'user',
+    password: 'pass'
+  }
+};
+
+var argv = parse(process.argv, parseOptions);
 
 var options = {
-  url: 'http://localhost:3000/login',
+  url: 'http://' + argv.host + ':' + argv.port + '/login',
+  rejectUnauthorized: false,
   auth: {
-    user: 'john',
-    password: '123'
+    user: argv.username,
+    password: argv.password
   }
 }
 
