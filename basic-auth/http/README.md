@@ -29,6 +29,7 @@ comments.
 ## See also
 
 * [prettified version of `server.js`](http://joyrexus.github.io/auth-demos/basic-auth/http/docs/server.html)
-
+* [`basic-auth`](https://github.com/jshttp/basic-auth/blob/master/index.js) -
+  node module for parsing the authorization header.
 * dat [`auth`](https://github.com/maxogden/dat/blob/master/lib/auth.js) module,
   used in conjunction with cookies.

@@ -35,6 +35,9 @@ var server = http.createServer(function(req, res) {
     // The `Authorization` was passed in so now we validate it
     else if(auth) {  
 
+        // We could use `basic-auth` module for parsing
+        // the auth header, but here we do it ourselves.
+        
         // Split on a space, the original auth looks like 
         // "Basic am9uZXM6MTIz" and we need the 2nd part
         var tmp = auth.split(' ');   
