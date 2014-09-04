@@ -28,5 +28,7 @@ comments.
 
 ## See also
 
+* [prettified version of `server.js`](http://joyrexus.github.io/auth-demos/basic-auth/http/docs/server.html)
+
 * dat [`auth`](https://github.com/maxogden/dat/blob/master/lib/auth.js) module,
   used in conjunction with cookies.
